@@ -14,9 +14,7 @@ pipeline {
   
    agent { label "${SLAVE_TARGET}" }
    
-   environment {
-     GIT_CREDENTIAL = d6a6ed5b-498f-47ed-b32e-969811c40abb
-   }
+
    
    stages {
       stage("scm-clone") {
@@ -29,7 +27,7 @@ pipeline {
 		     deleteDir()
 		   }
 		   if ("${GIT_BRANCH}" != ""){
-		     bat("git clone -b ${GIT_BRANCH} http://${GIT_CREDENTIAL}@${GIT_REPO}")
+		     bat("git clone -b ${GIT_BRANCH} credentialsId: 'd6a6ed5b-498f-47ed-b32e-969811c40abb' https://penumalla@${GIT_REPO}")
 		   
 		   }
 		   else {
