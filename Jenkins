@@ -27,11 +27,11 @@ pipeline {
 		   deleteDir()    
 		   if ("${GIT_BRANCH}" != ""){
 		     		 
-		     bat("C:\Program Files\Git\bin\git.exe clone -b ${GIT_BRANCH} credentialsId: 'd6a6ed5b-498f-47ed-b32e-969811c40abb' https://penumalla@${GIT_REPO}")
+		     bat("'C:/Program Files/Git/bin/git.exe' clone -b ${GIT_BRANCH} credentialsId: 'd6a6ed5b-498f-47ed-b32e-969811c40abb' https://penumalla@${GIT_REPO}")
 		   
 		   }
 		   else {
-		     bat("C:\Program Files\Git\bin\git.exe clone http://$GET_CREDENTIAL)@${GIT_REPO}")
+		     bat("'C:/Program Files/Git/bin/git.exe' clone http://$GET_CREDENTIAL)@${GIT_REPO}")
 		   }
 		   }
 		 }
