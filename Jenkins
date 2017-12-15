@@ -7,7 +7,7 @@ pipeline {
 	  string(name: "GIT_GOAL", defaultValue: "clone", description: "")
 	  string(name: "GIT_REPO", defaultValue: "https://github.com/penumalla/appcode.git", description: "")
 	  string(name: "GIT_BRANCH", defaultValue: "master", description: "")
-	  string(name: "MVN_GOAL", defaultValue: "install", description: "")
+	  string(name: "MVN_GOAL", defaultValue: "clean package", description: "")
 	  string(name: "MVN_PROP", defaultValue: "-DskipTests", description: "")
 	  
   }
@@ -23,15 +23,15 @@ pipeline {
 	   }
 	   steps {
 	     script {
-		   dir("D:/pipeline/rm"){
+		   dir("D:/pipeline/rm/appcode"){
 		   deleteDir()    
 		   if ("${GIT_BRANCH}" != ""){
 		     		 
-		     bat("git clone -b ${GIT_BRANCH} credentialsId: 'd6a6ed5b-498f-47ed-b32e-969811c40abb' url: {GIT_REPO}")
+		        bat("git clone -b ${GIT_BRANCH} ${GIT_REPO}")
 		   
 		   }
 		   else {
-		     bat("git clone http://$GET_CREDENTIAL)@${GIT_REPO}")
+		     bat("git clone ${GIT_REPO}")
 		   }
 		   }
 		 }
@@ -42,13 +42,28 @@ pipeline {
 		  environment name: "GIT_GOAL", value: "checkout"
 		}
 		steps {
-		  dir("D:/pipeline/rm") {
+		  dir("D:/pipeline/rm/appcode") {
 		    bat("git clean -fd")
 		    bat("git pull origin master")
 		    //bat("git pull")
 		  }
 		}
 	  }
+
+	stage("SCM-Compile/build")
+	      {
+		      steps {		      
+	                  dir("D:/pipeline/rm/appcode")
+		           {
+		             //sh("mvn -P=Batch -Denv=qa clean package")
+		               bat("cd")
+		             // withMaven(maven:'Maven_3_3_9', mavenLocalRepo: '.repository',mavenSettingsConfig:'my-config') {
+		              bat("mvn -Dmaven.repo.local=.repository ${MVN_GOAL} -Denv=local -P=Idp")
+		             //    bat 'mvn -P=Batch -Denv=qa clean package'
+		             //}
+			   }  
+                  }
+	      }
    }
 
 }
