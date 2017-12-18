@@ -75,8 +75,8 @@ pipeline {
     stage("Send artifacts")
 	       {
 		      steps {
-			      dir("D:")		  
-			      bat("pscp.exe D:/pipeline/rm/appcode/dol-public-web/target/*.war root@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
+			      ws("D:/")		  
+			      bat("pscp.exe D:/pipeline/rm/appcode/dol-public-web/target/dol-public-web-0.0.1-SNAPSHOT.war root@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
 
 			  
 			  }
