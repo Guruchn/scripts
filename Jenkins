@@ -80,7 +80,8 @@ pipeline {
 							removeColor: false,
 							verbose: true,
 							credential: 'Lab Credentials',
-							extraVars: ''
+							extraVars: '''---
+               admin_password: "adminsecret"'''
 					   )
 
 			   	   }
