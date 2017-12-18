@@ -75,9 +75,8 @@ pipeline {
     stage("Send artifacts")
 	       {
 		      steps {
-			  sshagent (credentials: ['rootforlinuxservers']
-			  
-			  bat ("D:/pscp D:/pipeline/rm/appcode/dol-public-web/target/*.war root@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
+			      dir("D:")		  
+			  bat ("pscp.exe D:/pipeline/rm/appcode/dol-public-web/target/*.war root@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
 
 			  
 			  }
