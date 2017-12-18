@@ -20,7 +20,7 @@ pipeline {
 
    
    stages {
-     /* stage("scm-clone") {
+      stage("scm-clone") {
 	   when {
 	      environment name: "GIT_GOAL", value: "clone"
 	   }
@@ -62,11 +62,16 @@ pipeline {
 		               bat("cd")
 		             // withMaven(maven:'Maven_3_3_9', mavenLocalRepo: '.repository',mavenSettingsConfig:'my-config') {
 		              bat("mvn -Dmaven.repo.local=.repository ${MVN_GOAL} -Denv=local -P=Idp")
+					  	archive "./dol-public-web/target/*.war" 
+						scp -r ./dol-public-web/target/*.war root@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files
+		               bat("mvn -Dmaven.repo.local=.repository ${MVN_GOAL} -Denv=local -P=Idp")
+			            archive "./dol-idp-web/target/*.war"
+						scp -r ./dol-idp-web/target/*.war root@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files
 		             //    bat 'mvn -P=Batch -Denv=qa clean package'
 		             //}
 			   }  
                   }
-	      } */
+	      } 
 	stage("Ansible Build")
 	      {
 		       steps {
