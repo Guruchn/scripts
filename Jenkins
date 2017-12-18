@@ -78,7 +78,7 @@ pipeline {
 							jobTags: '',
 							limit: '',
 							removeColor: false,
-							verbose: false
+							verbose: false,
 							credential: 'Lab Credentials',
 							extraVars: '''---
 			   http_port: "8080",
