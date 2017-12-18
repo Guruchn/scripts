@@ -64,8 +64,8 @@ pipeline {
 		              bat("mvn -Dmaven.repo.local=.repository ${MVN_GOAL} -Denv=local -P=Public")
 					  	 archive "./dol-public-web/target/*.war" 
 						
-		               bat("mvn -Dmaven.repo.local=.repository ${MVN_GOAL} -Denv=local -P=Idp")
-			            archive "./dol-idp-web/target/*.war"
+		           /*    bat("mvn -Dmaven.repo.local=.repository ${MVN_GOAL} -Denv=local -P=Idp")
+			            archive "./dol-idp-web/target/*.war" */
 						
 		             //    bat 'mvn -P=Batch -Denv=qa clean package'
 		             //}
@@ -76,7 +76,7 @@ pipeline {
 	       {
 		      steps {
 			      dir("D:")		  
-			  bat ("pscp.exe D:/pipeline/rm/appcode/dol-public-web/target/*.war root@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
+			      bat("pscp.exe D:/pipeline/rm/appcode/dol-public-web/target/*.war root@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
 
 			  
 			  }
