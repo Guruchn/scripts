@@ -84,7 +84,7 @@ pipeline {
 			   http_port: "8080",
 			   https_port: "8443",
 			   admin_username: "admin",
-			   admin_password: "adminsecret"
+			   admin_password: "adminsecret"'''
 					  )
 
 			   	   }
