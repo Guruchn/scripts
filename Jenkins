@@ -26,7 +26,7 @@ pipeline {
 	   }
 	   steps {
 	     script {
-		   dir("D:/pipeline/rm/appcode"){
+		   dir("D:/pipeline/rm"){
 		   deleteDir()    
 		   if ("${GIT_BRANCH}" != ""){
 		     		 
@@ -72,16 +72,16 @@ pipeline {
 		       steps {
 			           ansibleTower (
 							towerServer: 'TestAnsible',
-							credential: 'Lab Credentials',
 							jobTemplate: 'Test Tomcat',
 							importTowerLogs: true,
 							inventory: 'Lab Inventory',
-							extraVars: '',			  
 							jobTags: '',
 							limit: '',
 							removeColor: false,
-							verbose: false				   
-					   )
+							verbose: false
+							credential: 'Lab Credentials',
+							extraVars: ''
+					  )
 
 			   	   }
 		  }
