@@ -71,11 +71,11 @@ pipeline {
 	      {
 		       steps {
 			           ansibleTower (
-							towerServer: ${Ansible_Servername},
-							credential: ${Ansible_Credentials},
-							jobTemplate: ${Ansible_JobTemplate},
+							towerServer: 'TestAnsible',
+							credential: 'Lab Credentials',
+							jobTemplate: 'Test Tomcat',
 							importTowerLogs: true,
-							inventory: '',
+							inventory: 'Lab Inventory',
 							extraVars: '',			  
 							jobTags: '',
 							limit: '',
