@@ -75,14 +75,11 @@ pipeline {
     stage("Send artifacts")
 	       {
 		      steps {
-			  sshagent(['rootforlinuxservers']){
-			  
-			      ws("D:/")		  
-			      bat("D:/pscp.exe D:/pipeline/rm/appcode/dol-public-web/target/dol-public-web-0.0.1-SNAPSHOT.war root@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
+                        bat ("scp -i "C:\Users\svcwasadmin\.ssh\id_rsa" ./dol-public-web/target/*.war svcwasadmin@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files") 
 
 			  }
 			  }
-		   }
+		   
 	stage("Ansible Build")
 	      {
 		       steps {
