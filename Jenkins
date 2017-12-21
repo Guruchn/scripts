@@ -20,7 +20,7 @@ pipeline {
 
    
    stages {
-   /*   stage("scm-clone") {
+    stage("scm-clone") {
 	   when {
 	      environment name: "GIT_GOAL", value: "clone"
 	   }
@@ -71,7 +71,7 @@ pipeline {
 		             //}
 			   }  
                   }
-	      } */
+	      } 
     stage("Send artifacts")
 	       {
 		      steps {
