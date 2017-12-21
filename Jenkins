@@ -75,7 +75,7 @@ pipeline {
     stage("Send artifacts")
 	       {
 		      steps {
-			            dir("C:\Users\svcwasadmin\.ssh")
+			            dir("C:/Users/svcwasadmin/.ssh")
 						{
 						bat ("scp -i id_rsa ./dol-public-web/target/*.war svcwasadmin@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
 						}
