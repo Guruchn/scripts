@@ -20,7 +20,7 @@ pipeline {
 
    
    stages {
-      stage("scm-clone") {
+   /*   stage("scm-clone") {
 	   when {
 	      environment name: "GIT_GOAL", value: "clone"
 	   }
@@ -71,14 +71,16 @@ pipeline {
 		             //}
 			   }  
                   }
-	      }
+	      } */
     stage("Send artifacts")
 	       {
 		      steps {
-			      ws("D:/")		  
-			      bat("pscp.exe D:/pipeline/rm/appcode/dol-public-web/target/dol-public-web-0.0.1-SNAPSHOT.war root@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
-
+			  sshagent(['rootforlinuxservers']){
 			  
+			      ws("D:/")		  
+			      bat("D:/pscp.exe D:/pipeline/rm/appcode/dol-public-web/target/dol-public-web-0.0.1-SNAPSHOT.war root@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
+
+			  }
 			  }
 		   }
 	stage("Ansible Build")
