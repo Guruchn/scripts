@@ -63,7 +63,15 @@ pipeline {
 		             // withMaven(maven:'Maven_3_3_9', mavenLocalRepo: '.repository',mavenSettingsConfig:'my-config') {
 		              bat("mvn -Dmaven.repo.local=D:/pipeline/rm/.repository ${MVN_GOAL} -Denv=local -P=Public")
 					  	 archive "./dol-public-web/target/*.war" 
-						
+					  bat("mvn -Dmaven.repo.local=D:/pipeline/rm/.repository ${MVN_GOAL} -Denv=local -P=Idp")
+			            archive "./dol-idp-web/target/*.war"
+					    						
+					   bat("mvn -Dmaven.repo.local=D:/pipeline/rm/.repository ${MVN_GOAL} -Denv=local -P=Staff")
+				        archive "./dol-staff-web/target/*.war" 
+                       						
+					   bat("mvn -Dmaven.repo.local=D:/pipeline/rm/.repository ${MVN_GOAL} -Denv=local -P=Interfaces")
+				        archive "./dol-interfaces-web/target/*.war" 
+                       						
 		           /*    bat("mvn -Dmaven.repo.local=.repository ${MVN_GOAL} -Denv=local -P=Idp")
 			            archive "./dol-idp-web/target/*.war" */
 						
@@ -78,6 +86,9 @@ pipeline {
 			            dir("C:/Users/svcwasadmin/.ssh")
 						{
 						bat ("scp -o StrictHostKeyChecking=no -i ./id_rsa D:/pipeline/rm/appcode/dol-public-web/target/dol-public-web-0.0.1-SNAPSHOT.war svcwasadmin@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
+						bat ("scp -o StrictHostKeyChecking=no -i ./id_rsa D:/pipeline/rm/appcode/dol-idp-web/target/dol-idp-web-0.0.1-SNAPSHOT.war svcwasadmin@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
+						bat ("scp -o StrictHostKeyChecking=no -i ./id_rsa D:/pipeline/rm/appcode/dol-staff-web/target/dol-staff-web-0.0.1-SNAPSHOT.war svcwasadmin@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
+						bat ("scp -o StrictHostKeyChecking=no -i ./id_rsa D:/pipeline/rm/appcode/dol-interfaces-web/target/dol-interfaces-web-0.0.1-SNAPSHOT.war svcwasadmin@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
 						}
                          
 
