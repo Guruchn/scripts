@@ -86,9 +86,9 @@ pipeline {
 			            dir("C:/Users/svcwasadmin/.ssh")
 						{
 						bat ("scp -o StrictHostKeyChecking=no -i ./id_rsa D:/pipeline/rm/appcode/dol-public-web/target/dol-public-web-0.0.1-SNAPSHOT.war svcwasadmin@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
-					/*	bat ("scp -o StrictHostKeyChecking=no -i ./id_rsa D:/pipeline/rm/appcode/dol-idp-web/target/dol-idp-web-0.0.1-SNAPSHOT.war svcwasadmin@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
+						bat ("scp -o StrictHostKeyChecking=no -i ./id_rsa D:/pipeline/rm/appcode/dol-idp-web/target/dol-idp-web-0.0.1-SNAPSHOT.war svcwasadmin@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
 						bat ("scp -o StrictHostKeyChecking=no -i ./id_rsa D:/pipeline/rm/appcode/dol-staff-web/target/dol-staff-web-0.0.1-SNAPSHOT.war svcwasadmin@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
-						bat ("scp -o StrictHostKeyChecking=no -i ./id_rsa D:/pipeline/rm/appcode/dol-interfaces-web/target/dol-interfaces-web-0.0.1-SNAPSHOT.war svcwasadmin@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files") */
+						bat ("scp -o StrictHostKeyChecking=no -i ./id_rsa D:/pipeline/rm/appcode/dol-interfaces-web/target/dol-interfaces-web-0.0.1-SNAPSHOT.war svcwasadmin@labansible01:/var/lib/awx/projects/tomcat/roles/tomcat/files")
 						}
                          
 
